@@ -11,9 +11,9 @@ class Login extends Component {
     render() {
         return (
             <div className="tc">
-                 <h2>Login</h2>
-                 <a href="https://christineislistening.herokuapp.com/login">Connect your Spotify account</a>
-               </div>
+                <h2>Login</h2>
+                <a href="https://christineislistening.herokuapp.com/login">Connect your Spotify account</a>
+           </div>
         )
     }
 }
