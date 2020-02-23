@@ -1,17 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
-import 'url-search-params-polyfill';
 import Navigation from './components/Navigation/Navigation';
 import Login from "./components/Login/Login";
 
 class App extends Component {
   constructor() {
     super();
-    const urlParams = new URLSearchParams(window.location.search);
-    const isUserAuthorized = urlParams.has('authorized') ? true : false;
 
     this.state = {
-      isUserAuthorized,
       loading: true,
       redirect: false
     };
