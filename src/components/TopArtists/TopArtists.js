@@ -9,7 +9,7 @@ class TopArtists extends Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:5000/favourites')
+        fetch('https://christineislistening.herokuapp.com/favourites')
           .then(res => res.json())
           .then(data => {
             this.setState({

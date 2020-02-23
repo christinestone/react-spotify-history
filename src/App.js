@@ -18,7 +18,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:5000/checkToken')
+    fetch('https://christineislistening.herokuapp.com/checkToken')
         .then(res => {
           if (res.status === 200) {
             this.setState({ loading: false });

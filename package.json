@@ -1,6 +1,5 @@
 {
   "name": "spotify-history-ui",
-  "homepage": "https://christinestone.github.io/react-spotify/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

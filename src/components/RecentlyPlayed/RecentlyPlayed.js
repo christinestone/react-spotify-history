@@ -10,7 +10,7 @@ class RecentlyPlayed extends Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:5000/history')
+        fetch('https://christineislistening.herokuapp.com/history')
           .then(res => res.json())
           .then(data => {
             this.setState({
