@@ -1,0 +1,25 @@
+.login {
+  text-align: center;
+}
+
+.login__title {
+  color: #fff;
+  margin: 10vh 0 50vh;
+  padding: 0;
+}
+
+.background_image {
+  background-image: url('../../assets/speaker.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-wrap: wrap;
+  opacity: 1;
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+}
