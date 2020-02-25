@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import './Login.css';
+import { Button } from '@material-ui/core';
 
 class Login extends Component {
     constructor() {
@@ -10,10 +12,16 @@ class Login extends Component {
 
     render() {
         return (
-            <div className="tc">
-                <h2>Login</h2>
-                <a href="https://christineislistening.herokuapp.com/login">Connect your Spotify account</a>
-           </div>
+            <span className="login">
+                <h1 className="login__title">Login</h1>
+                <Button className="btn btn-primary btn-login" variant="contained">
+                  <a href="http://localhost:5000/login">
+                    Connect to Spotify
+                </a>
+                </Button>
+
+                <div className="background_image" />
+           </span>
         )
     }
 }

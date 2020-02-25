@@ -23,7 +23,7 @@ class RecentlyPlayed extends Component {
     render() {
         const { recentlyPlayed } = this.state;
         return (
-            <div className="tc">
+            <div className="tl">
                  <h2>Recently Played</h2>
                  <table className="table tl">
                    <tbody>{recentlyPlayed.map((e, index) => TableItem(e, index))}</tbody>

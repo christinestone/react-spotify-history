@@ -30,14 +30,17 @@ class App extends Component {
   }
 
   render() {
-    const { loading, redirect } = this.state;
-      if (loading) {
-        return null;
-      }
-      if (redirect) {
-        return <Login />;
-      }
-      return <Navigation />;
+    const { redirect } = this.state;
+    return (
+        <div className="tl">
+          { redirect
+              ?
+              <Login/>
+              :
+              <Login/>
+          }
+        </div>
+    )
   }
 }
 
