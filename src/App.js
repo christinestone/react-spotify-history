@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import Navigation from './components/Navigation/Navigation';
 import Login from "./components/Login/Login";
+import AppContent  from './AppContent';
 
 class App extends Component {
   constructor() {
@@ -37,7 +37,7 @@ class App extends Component {
               ?
               <Login/>
               :
-              <Navigation/>
+              <AppContent/>
           }
         </div>
     )

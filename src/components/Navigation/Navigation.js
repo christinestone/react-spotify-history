@@ -1,9 +1,8 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import React  from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import RestoreIcon from '@material-ui/icons/Restore';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-
+import { NavLink } from "react-router-dom";
 import {
   Avatar,
   Drawer,
@@ -11,17 +10,8 @@ import {
   List,
   ListItem,
   ListItemIcon,
-  ListItemText,
-  CssBaseline
+  ListItemText
 } from '@material-ui/core';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  NavLink
-} from "react-router-dom";
-import TopArtists from "../TopArtists/TopArtists";
-import RecentlyPlayed from '../RecentlyPlayed/RecentlyPlayed';
 
 const drawerWidth = 180;
 
@@ -42,7 +32,7 @@ const useStyles = makeStyles(theme => ({
       marginLeft: drawerWidth,
     },
   },
-  toolbar: theme.mixins.toolbar,
+  // toolbar: theme.mixins.toolbar,
   drawerPaper: {
     width: drawerWidth,
   },
@@ -56,26 +46,8 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-function ResponsiveDrawer(props) {
-  const { container } = props;
+function ResponsiveDrawer() {
   const classes = useStyles();
-  const theme = useTheme();
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
-
-  const ReactRouter = () => {
-    return (
-      <Fragment>
-          <Switch>
-              <Route exact path="/recently-played" component={RecentlyPlayed} />
-              <Route path="/top-artists" component={TopArtists} />
-          </Switch>
-      </Fragment>
-     )
-   };
 
   const drawer = (
     <div>
@@ -108,54 +80,20 @@ function ResponsiveDrawer(props) {
   );
 
   return (
-    <div className={classes.root}>
-      <Router>
-      <CssBaseline />
-      <nav className={classes.drawer}>
-        <Hidden smUp implementation="css">
-          <Drawer
-            container={container}
-            variant="temporary"
-            anchor={theme.direction === 'rtl' ? 'right' : 'left'}
-            open={mobileOpen}
-            onClose={handleDrawerToggle}
-            classes={{
-              paper: classes.drawerPaper,
-            }}
-            ModalProps={{
-              keepMounted: true, // Better open performance on mobile.
-            }}
-          >
-            {drawer}
-          </Drawer>
-        </Hidden>
-        <Hidden xsDown implementation="css">
-          <Drawer
-            classes={{
-              paper: classes.drawerPaper,
-            }}
-            variant="permanent"
-            open
-          >
-            {drawer}
-          </Drawer>
-        </Hidden>
-      </nav>
-      <main className={classes.content}>
-        <div className={classes.toolbar} />
-        <ReactRouter/>
-      </main>
-      </Router>
-    </div>
+    <nav className={classes.drawer}>
+      <Hidden xsDown implementation="css">
+        <Drawer
+          classes={{
+            paper: classes.drawerPaper,
+          }}
+          variant="permanent"
+          open
+        >
+          {drawer}
+        </Drawer>
+      </Hidden>
+    </nav>
   );
 }
-
-ResponsiveDrawer.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
-  container: PropTypes.any,
-};
 
 export default ResponsiveDrawer;
