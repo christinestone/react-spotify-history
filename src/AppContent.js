@@ -13,6 +13,7 @@ import {
 } from "react-router-dom";
 import TopArtists from "./components/TopArtists/TopArtists";
 import RecentlyPlayed from './components/RecentlyPlayed/RecentlyPlayed';
+import TopTracks from './components/TopTracks/TopTracks';
 
 const drawerWidth = 180;
 
@@ -56,6 +57,7 @@ function ResponsiveDrawer(props) {
           <Switch>
               <Route exact path="/recently-played" component={RecentlyPlayed} />
               <Route path="/top-artists" component={TopArtists} />
+              <Route path="/top-tracks" component={TopTracks} />
           </Switch>
       </Fragment>
      )
