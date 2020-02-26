@@ -1,8 +1,10 @@
 import React  from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import RestoreIcon from '@material-ui/icons/Restore';
-import FavoriteIcon from '@material-ui/icons/Favorite';
+import ClockIcon from '@material-ui/icons/QueryBuilderOutlined';
+import FavoriteIcon from '@material-ui/icons/FavoriteBorderOutlined';
+import StarIcon from '@material-ui/icons/StarBorderOutlined';
 import { NavLink } from "react-router-dom";
+import './index.css';
 import {
   Avatar,
   Drawer,
@@ -26,23 +28,16 @@ const useStyles = makeStyles(theme => ({
       flexShrink: 0,
     },
   },
-  appBar: {
-    [theme.breakpoints.up('sm')]: {
-      width: `calc(100% - ${drawerWidth}px)`,
-      marginLeft: drawerWidth,
-    },
-  },
-  // toolbar: theme.mixins.toolbar,
   drawerPaper: {
     width: drawerWidth,
-  },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(3),
+    alignItems: 'center',
+    paddingTop: '8%',
+    backgroundColor: '#66b2b2'
   },
   large: {
     width: theme.spacing(14),
-    height: theme.spacing(14)
+    height: theme.spacing(14),
+    marginLeft: '12%'
   }
 }));
 
@@ -51,7 +46,6 @@ function ResponsiveDrawer() {
 
   const drawer = (
     <div>
-      <div className={classes.toolbar} />
         <Avatar
           src="https://image.shutterstock.com/mosaic_250/706162/671021971/stock-photo-the-golden-retriever-wearing-headphones-listening-to-music-671021971.jpg"
           className={classes.large}
@@ -65,13 +59,13 @@ function ResponsiveDrawer() {
             </ListItem>
           <ListItem button key="recently-played">
             <NavLink to="/recently-played">
-              <ListItemIcon><RestoreIcon /></ListItemIcon>
+              <ListItemIcon><ClockIcon /></ListItemIcon>
               <ListItemText primary="Recently Played" />
             </NavLink>
             </ListItem>
           <ListItem button key="top-artists">
             <NavLink to="/top-artists">
-              <ListItemIcon><FavoriteIcon /></ListItemIcon>
+              <ListItemIcon><StarIcon /></ListItemIcon>
               <ListItemText primary="Favourite Artists" />
             </NavLink>
             </ListItem>
