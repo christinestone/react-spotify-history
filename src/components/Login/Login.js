@@ -15,7 +15,7 @@ class Login extends Component {
             <span className="login">
                 <h1 className="login__title">Login</h1>
                 <Button className="btn btn-primary btn-login" variant="contained">
-                  <a href="http://localhost:5000/login">
+                  <a href="https://christineislistening.herokuapp.com/login">
                     Connect to Spotify
                 </a>
                 </Button>
