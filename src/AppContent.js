@@ -7,9 +7,10 @@ import {
   CssBaseline
 } from '@material-ui/core';
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Redirect
 } from "react-router-dom";
 import TopArtists from "./components/TopArtists/TopArtists";
 import RecentlyPlayed from './components/RecentlyPlayed/RecentlyPlayed';
@@ -71,7 +72,7 @@ function ResponsiveDrawer(props) {
 
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <ReactRouter/>
+          { window.location.pathname === '/' ? <Redirect to='/top-tracks' />: <ReactRouter/>}
       </main>
       </Router>
     </div>
