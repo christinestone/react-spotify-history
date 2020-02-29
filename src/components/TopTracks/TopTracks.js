@@ -53,7 +53,7 @@ class TopTracks extends Component {
                 audio.pause();
                 tracks[index].playState = 'paused';
             } else {
-                if (trackState === 'stopped') {
+                if (!audio.src || trackState === 'stopped') {
                     audio.src = preview;
                 }
                 tracks[index].playState = 'playing';
