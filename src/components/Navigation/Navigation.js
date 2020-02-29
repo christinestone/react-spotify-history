@@ -1,4 +1,4 @@
-import React  from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import ClockIcon from '@material-ui/icons/QueryBuilderOutlined';
 import FavoriteIcon from '@material-ui/icons/FavoriteBorderOutlined';
@@ -19,8 +19,20 @@ const drawerWidth = 180;
 
 const useStyles = makeStyles(theme => ({
   root: {
-    display: 'flex',
-    // width: 500,
+    display: 'flex'
+  },
+  list: {
+    [theme.breakpoints.down('xs')]: {
+        display: 'flex',
+        flexDirection: 'row',
+        marginTop: 0,
+        alignItems: 'baseline'
+    }
+  },
+  listItem: {
+    [theme.breakpoints.down('xs')]: {
+        marginTop: 0
+    }
   },
   drawer: {
     [theme.breakpoints.up('sm')]: {
@@ -29,10 +41,20 @@ const useStyles = makeStyles(theme => ({
     },
   },
   drawerPaper: {
-    width: drawerWidth,
-    alignItems: 'center',
-    paddingTop: '8%',
-    backgroundColor: '#66b2b2'
+    backgroundColor: '#66b2b2',
+
+    [theme.breakpoints.up('sm')]: {
+        width: drawerWidth,
+        alignItems: 'center',
+        paddingTop: '8%',
+    },
+    [theme.breakpoints.down('xs')]: {
+      bottom: 0,
+      display: 'flex',
+      position: 'fixed',
+      width: '100%',
+      height: '8%'
+    }
   },
   large: {
     width: theme.spacing(14),
@@ -43,28 +65,29 @@ const useStyles = makeStyles(theme => ({
 
 function ResponsiveDrawer() {
   const classes = useStyles();
-
   const drawer = (
     <div>
-        <Avatar
-          src="https://image.shutterstock.com/mosaic_250/706162/671021971/stock-photo-the-golden-retriever-wearing-headphones-listening-to-music-671021971.jpg"
-          className={classes.large}
-        />
-        <List>
+        <Hidden xsDown implementation="css">
+            <Avatar
+              src="https://image.shutterstock.com/mosaic_250/706162/671021971/stock-photo-the-golden-retriever-wearing-headphones-listening-to-music-671021971.jpg"
+              className={classes.large}
+            />
+        </Hidden>
+        <List className={classes.list}>
           <ListItem button key="top-tracks">
-            <NavLink to="/top-tracks">
+            <NavLink to="/top-tracks" className={classes.listItem}>
               <ListItemIcon><FavoriteIcon /></ListItemIcon>
               <ListItemText primary="Top Tracks" />
             </NavLink>
             </ListItem>
           <ListItem button key="recently-played">
-            <NavLink to="/recently-played">
+            <NavLink to="/recently-played" className={classes.listItem}>
               <ListItemIcon><ClockIcon /></ListItemIcon>
               <ListItemText primary="Recently Played" />
             </NavLink>
             </ListItem>
           <ListItem button key="top-artists">
-            <NavLink to="/top-artists">
+            <NavLink to="/top-artists" className={classes.listItem}>
               <ListItemIcon><StarIcon /></ListItemIcon>
               <ListItemText primary="Favourite Artists" />
             </NavLink>
@@ -75,7 +98,6 @@ function ResponsiveDrawer() {
 
   return (
     <nav className={classes.drawer}>
-      <Hidden xsDown implementation="css">
         <Drawer
           classes={{
             paper: classes.drawerPaper,
@@ -85,7 +107,6 @@ function ResponsiveDrawer() {
         >
           {drawer}
         </Drawer>
-      </Hidden>
     </nav>
   );
 }
