@@ -10,8 +10,7 @@ class TopTracks extends Component {
         this.state = {
           tracks: [],
           audio: new Audio(),
-          selectedTrack: null,
-          isPlayerActive: false
+          selectedTrack: null
         };
 
         this.state.audio.addEventListener('ended', () => {
@@ -31,8 +30,11 @@ class TopTracks extends Component {
     }
 
     updateTrackState(selectedTrack) {
-        this.state.tracks[selectedTrack].playState = 'stopped';
-        this.setState({ isPlayerActive: false });
+        let updatedTracks = this.state.tracks;
+
+        updatedTracks[selectedTrack].playState = 'stopped';
+
+        this.setState({ tracks: updatedTracks });
     }
 
     render() {
@@ -50,13 +52,11 @@ class TopTracks extends Component {
             if (trackState === 'playing') {
                 audio.pause();
                 tracks[index].playState = 'paused';
-                this.setState({ isPlayerActive: false });
             } else {
                 if (trackState === 'stopped') {
                     audio.src = preview;
                 }
                 tracks[index].playState = 'playing';
-                this.setState({ isPlayerActive: true });
                 audio.play();
             }
 
