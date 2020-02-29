@@ -32,7 +32,7 @@ class App extends Component {
   render() {
     const { redirect } = this.state;
     return (
-        <div className="tl">
+        <div className="tc">
           { redirect
               ?
               <Login/>

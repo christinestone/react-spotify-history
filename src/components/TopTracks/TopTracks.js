@@ -9,8 +9,14 @@ class TopTracks extends Component {
         super();
         this.state = {
           tracks: [],
-          audio: new Audio
+          audio: new Audio(),
+          selectedTrack: null,
+          isPlayerActive: false
         };
+
+        this.state.audio.addEventListener('ended', () => {
+            this.updateTrackState(this.state.selectedTrack);
+        });
     }
 
     componentDidMount() {
@@ -24,68 +30,66 @@ class TopTracks extends Component {
           .catch(error => console.log(error));
     }
 
+    updateTrackState(selectedTrack) {
+        this.state.tracks[selectedTrack].playState = 'stopped';
+        this.setState({ isPlayerActive: false });
+    }
+
     render() {
         const { tracks, audio } = this.state;
 
+        const playPreview = async (preview, index) => {
+            tracks.forEach(item => {
+                if (item.preview !== preview) {
+                    audio.pause();
+                    item.playState = 'stopped';
+                }
+            });
+
+            let trackState = tracks[index].playState;
+            if (trackState === 'playing') {
+                audio.pause();
+                tracks[index].playState = 'paused';
+                this.setState({ isPlayerActive: false });
+            } else {
+                if (trackState === 'stopped') {
+                    audio.src = preview;
+                }
+                tracks[index].playState = 'playing';
+                this.setState({ isPlayerActive: true });
+                audio.play();
+            }
+
+            this.setState({ selectedTrack: index });
+        };
+
         return (
             <div>
-              <h2>Top Tracks</h2>
+              <h2 className="tl">Top Tracks</h2>
                 <table className="tl">
                   <tbody>
-                    {tracks.map(({ imageUrl, artist, track, preview }, index) => (
-                        <Track imageUrl={imageUrl} artist={artist} track={track} preview={preview} key={index} audio={audio} />
+                    {tracks.map(({ imageUrl, artist, track, preview, playState }, index) => (
+                        <tr key={index}>
+                            <td>
+                                {index+1}
+                            </td>
+                            <td>
+                                <img src={imageUrl} alt='artist' height={100} width={100}/>
+                            </td>
+                            <td>
+                                <b>{artist}</b><br/>
+                                {track}
+                            </td>
+                            <td>
+                                <IconButton onClick={() => playPreview(preview, index)}>
+                                    { playState === 'playing' ? <PauseIcon /> : <PlayIcon />}
+                                </IconButton>
+                            </td>
+                        </tr>
                     ))}
                   </tbody>
                 </table>
             </div>
-        )
-    }
-}
-
-class Track extends React.Component {
-    constructor(props) {
-        super();
-        this.state = {
-          playState: 'stopped'
-        }
-
-        props.audio.addEventListener('ended', () => {
-            this.setState({ playState: 'stopped' });
-        });
-    }
-    render() {
-        const { imageUrl, artist, track, preview, audio } = this.props;
-
-        const playPreview = async (preview) => {
-            const { playState } = this.state;
-            if (playState === 'playing') {
-                audio.pause();
-                this.setState({ playState: 'paused' });
-            }
-            else {
-                if (playState === 'stopped') {
-                    audio.src = preview;
-                }
-                audio.play();
-                this.setState({ playState: 'playing' });
-            }
-        };
-
-        return(
-            <tr>
-                <td>
-                    <img src={imageUrl} alt='artist' height={100} width={100}/>
-                </td>
-                <td>
-                    <b>{artist}</b><br/>
-                    {track}
-                </td>
-                <td>
-                    <IconButton onClick={() => playPreview(preview)}>
-                        { this.state.playState === 'playing' ? <PauseIcon /> : <PlayIcon />}
-                    </IconButton>
-                </td>
-            </tr>
         )
     }
 }

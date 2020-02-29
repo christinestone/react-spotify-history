@@ -24,7 +24,7 @@ class TopArtists extends Component {
 
         return (
             <div>
-              <h2>Top Artists</h2>
+              <h2 className="tl">Top Artists</h2>
                 <table className="tl">
                   <tbody>
                     {artists.map(({ imageUrl, artist, genres }, index) => (
