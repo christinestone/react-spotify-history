@@ -49,9 +49,6 @@ const useStyles = makeStyles(theme => ({
         paddingTop: '8%',
     },
     [theme.breakpoints.down('xs')]: {
-      bottom: 0,
-      display: 'flex',
-      position: 'fixed',
       width: '100%',
       height: '8%'
     }

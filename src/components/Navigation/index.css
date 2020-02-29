@@ -10,3 +10,8 @@ a {
 svg {
     margin-left: 13px;
 }
+
+.MuiDrawer-paper {
+    bottom: 0;
+    top: unset !important;
+}
