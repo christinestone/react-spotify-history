@@ -16,6 +16,7 @@ class App extends Component {
   componentDidMount() {
     fetch('https://christineislistening.herokuapp.com/checkToken')
         .then(res => {
+            console.log(res);
           if (res.status === 200) {
             this.setState({ loading: false });
           } else {
@@ -30,7 +31,8 @@ class App extends Component {
   }
 
   render() {
-    const { redirect } = this.state;
+    const { redirect, loading } = this.state;
+    if (loading) return null;
     return (
         <div className="tc">
           { redirect
