@@ -37,6 +37,9 @@ class TopArtists extends Component {
                     {artists.map(({ imageUrl, artist, genres }, index) => (
                     <tr key={index}>
                         <td>
+                            {index+1}
+                        </td>
+                        <td>
                             <img src={imageUrl} alt='artist' height={100} width={100}/>
                         </td>
                         <td>
