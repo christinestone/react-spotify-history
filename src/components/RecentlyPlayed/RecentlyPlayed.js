@@ -10,7 +10,14 @@ class RecentlyPlayed extends Component {
     }
 
     componentDidMount() {
-        fetch('https://christineislistening.herokuapp.com/history')
+        const token = window.sessionStorage.getItem('token');
+        fetch('https://christineislistening.herokuapp.com/history', {
+            method: 'post',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': token
+            }
+        })
           .then(res => res.json())
           .then(data => {
             this.setState({

@@ -19,7 +19,14 @@ class TopTracks extends Component {
     }
 
     componentDidMount() {
-        fetch('https://christineislistening.herokuapp.com/tracks')
+        const token = window.sessionStorage.getItem('token');
+        fetch('https://christineislistening.herokuapp.com/tracks', {
+            method: 'post',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': token
+            }
+        })
           .then(res => res.json())
           .then(data => {
             this.setState({

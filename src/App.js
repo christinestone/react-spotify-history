@@ -14,20 +14,18 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('https://christineislistening.herokuapp.com/checkToken')
-        .then(res => {
-            console.log(res);
-          if (res.status === 200) {
-            this.setState({ loading: false });
-          } else {
-            const error = new Error(res.error);
-            throw error;
-          }
-        })
-        .catch(err => {
-          console.error(err);
-          this.setState({ loading: false, redirect: true });
-        });
+    const token = window.sessionStorage.getItem('token');
+    token ? this.setState({ loading: false, redirect: false }) : this.setToken();
+  }
+
+  setToken() {
+    const url = window.location.href;
+    const accessToken = url.split('#access_token=')[1];
+    if (accessToken) {
+      window.sessionStorage.setItem('token', accessToken);
+      window.location.href = 'https://christineislistening.herokuapp.com';
+    }
+    this.setState({ loading: false, redirect: true });
   }
 
   render() {

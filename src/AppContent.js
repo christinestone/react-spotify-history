@@ -72,7 +72,8 @@ function ResponsiveDrawer(props) {
 
       <main className={classes.content}>
         <div className={classes.toolbar} />
-          { window.location.pathname === '/' ? <Redirect to='/top-tracks' />: <ReactRouter/>}
+          {/*{ window.location.pathname === '/' ? <Redirect to='/top-tracks' />: <ReactRouter/>}*/}
+          <ReactRouter/>
       </main>
       </Router>
     </div>
