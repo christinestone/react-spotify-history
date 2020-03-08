@@ -71,9 +71,9 @@ class TopTracks extends Component {
         };
 
         return (
-            <div>
-              <h2 className="tl">Top Tracks</h2>
-                <table className="tl">
+            <div className="tl helvetica">
+              <h2 className="tc">Top Tracks</h2>
+                <table>
                   <tbody>
                     {tracks.map(({ imageUrl, artist, track, preview, playState }, index) => (
                         <tr key={index}>

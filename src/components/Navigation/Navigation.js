@@ -50,7 +50,7 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.down('xs')]: {
       width: '100%',
-      height: '8%'
+      height: '10%'
     }
   },
   large: {
@@ -74,21 +74,27 @@ function ResponsiveDrawer() {
           <ListItem button key="top-tracks">
             <NavLink to="/top-tracks" className={classes.listItem}>
               <ListItemIcon><FavoriteIcon /></ListItemIcon>
-              <ListItemText primary="Top Tracks" />
+               <Hidden xsDown implementation="css">
+                <ListItemText primary="Top Tracks" />
+              </Hidden>
             </NavLink>
             </ListItem>
           <ListItem button key="recently-played">
             <NavLink to="/recently-played" className={classes.listItem}>
               <ListItemIcon><ClockIcon /></ListItemIcon>
-              <ListItemText primary="Recently Played" />
+              <Hidden xsDown implementation="css">
+                <ListItemText primary="Recently Played" />
+              </Hidden>
             </NavLink>
             </ListItem>
           <ListItem button key="top-artists">
             <NavLink to="/top-artists" className={classes.listItem}>
               <ListItemIcon><StarIcon /></ListItemIcon>
-              <ListItemText primary="Favourite Artists" />
+              <Hidden xsDown implementation="css">
+                <ListItemText primary="Favourite Artists" />
+              </Hidden>
             </NavLink>
-            </ListItem>
+          </ListItem>
         </List>
     </div>
   );

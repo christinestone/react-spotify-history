@@ -30,9 +30,9 @@ class TopArtists extends Component {
         const { artists } = this.state;
 
         return (
-            <div>
-              <h2 className="tl">Top Artists</h2>
-                <table className="tl">
+            <div className="tl helvetica">
+              <h2 className="tc">Top Artists</h2>
+                <table>
                   <tbody>
                     {artists.map(({ imageUrl, artist, genres }, index) => (
                     <tr key={index}>

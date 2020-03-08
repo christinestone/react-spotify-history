@@ -15,3 +15,7 @@ svg {
     bottom: 0;
     top: unset !important;
 }
+
+.MuiListItemIcon-root {
+    display: unset !important;
+}
