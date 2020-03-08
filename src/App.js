@@ -23,7 +23,7 @@ class App extends Component {
     const accessToken = url.split('#access_token=')[1];
     if (accessToken) {
       window.sessionStorage.setItem('token', accessToken);
-      window.location.href = 'https://christineislistening.herokuapp.com';
+      window.location.href = 'https://christines-tunes.herokuapp.com';
     }
     this.setState({ loading: false, redirect: true });
   }
