@@ -13,11 +13,10 @@ class Login extends Component {
     render() {
         return (
             <span className="login">
-                <h1 className="login__title">Login</h1>
-                <Button className="btn btn-primary btn-login" variant="contained">
-                  <a href="https://christineislistening.herokuapp.com/login">
+                <Button className="btn btn-primary" variant="contained">
+                  <a href="https://christineislistening.herokuapp.com/login" className="pa3 mt0">
                     Connect to Spotify
-                </a>
+                  </a>
                 </Button>
 
                 <div className="background_image" />
