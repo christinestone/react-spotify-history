@@ -31,11 +31,11 @@ class RecentlyPlayed extends Component {
         const { recentlyPlayed } = this.state;
         return (
             <div className="tl helvetica">
-                 <h2 className="tc">Recently Played</h2>
-                 <table className="table">
+                <h2 style={{color: '#66b2b2'}}>Recently Played</h2>
+                <table className="table">
                    <tbody>{recentlyPlayed.map((e, index) => TableItem(e, index))}</tbody>
-                 </table>
-               </div>
+                </table>
+            </div>
         )
     }
 }
