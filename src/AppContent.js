@@ -56,7 +56,8 @@ function ResponsiveDrawer(props) {
     return (
       <Fragment>
           <Switch>
-              <Route exact path="/recently-played" component={RecentlyPlayed} />
+              <Redirect exact from="/" to="/recently-played" />
+              <Route path="/recently-played" component={RecentlyPlayed} />
               <Route path="/top-artists" component={TopArtists} />
               <Route path="/top-tracks" component={TopTracks} />
           </Switch>
@@ -72,7 +73,6 @@ function ResponsiveDrawer(props) {
 
       <main className={classes.content}>
         <div className={classes.toolbar} />
-          {/*{ window.location.pathname === '/' ? <Redirect to='/top-tracks' />: <ReactRouter/>}*/}
           <ReactRouter/>
       </main>
       </Router>
