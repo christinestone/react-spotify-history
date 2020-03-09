@@ -30,6 +30,7 @@ const useStyles = makeStyles(theme => ({
     }
   },
   listItem: {
+    opacity: 0.4,
     [theme.breakpoints.down('xs')]: {
         marginTop: 0
     }
@@ -62,6 +63,26 @@ const useStyles = makeStyles(theme => ({
 
 function ResponsiveDrawer() {
   const classes = useStyles();
+  const links = [
+      {
+          key: 'top-tracks',
+          to: '/top-tracks',
+          icon: <FavoriteIcon />,
+          text: 'Top Tracks'
+      },
+      {
+          key: 'recently-played',
+          to: '/recently-played',
+          icon: <ClockIcon />,
+          text: 'Recently Played'
+      },
+      {
+          key: 'top-artists',
+          to: '/top-artists',
+          icon: <StarIcon />,
+          text: 'Top Artists'
+      }
+  ];
   const drawer = (
     <div>
         <Hidden xsDown implementation="css">
@@ -71,30 +92,18 @@ function ResponsiveDrawer() {
             />
         </Hidden>
         <List className={classes.list}>
-          <ListItem button key="top-tracks">
-            <NavLink to="/top-tracks" className={classes.listItem}>
-              <ListItemIcon><FavoriteIcon /></ListItemIcon>
-               <Hidden xsDown implementation="css">
-                <ListItemText primary="Top Tracks" />
-              </Hidden>
-            </NavLink>
-            </ListItem>
-          <ListItem button key="recently-played">
-            <NavLink to="/recently-played" className={classes.listItem}>
-              <ListItemIcon><ClockIcon /></ListItemIcon>
-              <Hidden xsDown implementation="css">
-                <ListItemText primary="Recently Played" />
-              </Hidden>
-            </NavLink>
-            </ListItem>
-          <ListItem button key="top-artists">
-            <NavLink to="/top-artists" className={classes.listItem}>
-              <ListItemIcon><StarIcon /></ListItemIcon>
-              <Hidden xsDown implementation="css">
-                <ListItemText primary="Favourite Artists" />
-              </Hidden>
-            </NavLink>
-          </ListItem>
+            { links.map(link =>
+                (
+                <ListItem button key={link.key}>
+                    <NavLink to={link.to} className={classes.listItem} activeStyle={{opacity: 1}}>
+                        <ListItemIcon>{link.icon}</ListItemIcon>
+                        <Hidden xsDown implementation="css">
+                            <ListItemText primary={link.text} />
+                        </Hidden>
+                    </NavLink>
+                </ListItem>
+                ))
+            }
         </List>
     </div>
   );
