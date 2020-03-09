@@ -72,7 +72,7 @@ class TopTracks extends Component {
 
         return (
             <div className="tl helvetica">
-              <h2 className="tc">Top Tracks</h2>
+                <h2 style={{color: '#66b2b2'}}>Top Tracks</h2>
                 <table>
                   <tbody>
                     {tracks.map(({ imageUrl, artist, track, preview, playState }, index) => (
