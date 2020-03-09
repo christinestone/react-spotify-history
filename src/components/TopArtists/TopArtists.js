@@ -31,23 +31,16 @@ class TopArtists extends Component {
 
         return (
             <div className="tl helvetica">
-              <h2 className="tc">Top Artists</h2>
+                <h2 style={{color: '#66b2b2'}}>Top Artists</h2>
                 <table>
                   <tbody>
                     {artists.map(({ imageUrl, artist, genres }, index) => (
                     <tr key={index}>
-                        <td>
-                            {index+1}
-                        </td>
-                        <td>
-                            <img src={imageUrl} alt='artist' height={100} width={100}/>
-                        </td>
-                        <td>
-                            <b>{artist}</b><br/>{genres.join(', ')}
-                        </td>
+                        <td>{index+1}</td>
+                        <td><img src={imageUrl} alt='artist' height={100} width={100}/></td>
+                        <td><b>{artist}</b><br/>{genres.join(', ')}</td>
                     </tr>
-                    )
-                    )}
+                    ))}
                   </tbody>
                 </table>
             </div>
